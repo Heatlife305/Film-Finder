@@ -2,6 +2,13 @@ body,
 html {
   height: 100%;
 }
+
+label {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .bg {
   /* The image used */
   background-image: url(../images/house1.png);
