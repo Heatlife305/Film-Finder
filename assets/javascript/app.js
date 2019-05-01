@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    var queryURL = "https://www.omdbapi.com/?t=inception&apikey=trilogy";
+    var movie = $(this).attr("data-name");
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
     $.ajax({
         url: queryURL,
