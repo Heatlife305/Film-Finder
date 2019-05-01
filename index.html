@@ -12,33 +12,31 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Bootstrap CDN-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <!-- Css-->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 
-<body class="bg">
-    <!--Nav-->
-    <!--form input-->
+<body>
     <div class="container">
+        <!--form card/ input-->
         <div class="row">
-            <div class="col-8">
-                <div class="card-panel teal">
-                    <span class="white-text">
-                    </span>
-                    <form>
-                        <div class="form-group">
-                            <label>Search a movie!</label>
-                            <input type="text" class="form-control" id="movie">
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Submit" />
-                    </form>
+            <form id="movie-form" class="col s8">
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="input-movie" type="text">
+                        <label for="input-movie">Movie Title Here!</label>
+                        <button class="btn waves-effect waves-light" id="search-btn" type="submit" name="action">Search
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </div>
+        <!-- display card -->
+        <div class="row">
+            <div class="col s8" id="movie-info"></div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
