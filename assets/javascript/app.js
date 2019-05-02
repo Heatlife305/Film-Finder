@@ -27,7 +27,13 @@ $(document).ready(function() {
 
         var pThree = $("<p>").text("Plot: " + plot);
 
+        movieDiv.append(pThree);
 
+        var imgURL = response.Poster
+
+        var image = $("<img>").attr("src", imgURL);
+
+        movieDiv.append(image);
 
         $("#movie-view").prepend(movieDiv);
     });
