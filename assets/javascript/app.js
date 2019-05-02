@@ -35,8 +35,8 @@ $(document).ready(function() {
 
         movieDiv.append(image);
 
-        $("#movie-view").prepend(movieDiv);
-    });
+        $("#movie-info").prepend(movieDiv);
+    
 
 // Second AJAX call to Utelly
 //==================================================================
@@ -55,7 +55,6 @@ var movieLocation;
 
        }
    }).then(function(data){
-       console.log(data);
        console.log(data.results)
        console.log(data.results[0])
        console.log(data.results[0].locations[0].display_name)
@@ -65,14 +64,36 @@ var movieLocation;
 
        for (var i = 0; i < response.length; i++) {
             console.log(response[i].display_name)
-            console.log(response[i].url)
+            //console.log(response[i].url)
+
+            // Utelly locations
+            var locationsName = response[i].display_name
+
+            var locationsURL = response[i].url
+            console.log(locationsURL);
+
+            var pFour = $("<p>").text("You can watch it here: " + locationsName);
+
+
+            movieDiv.append(pFour);
+
+            var pFive = $("<a href=" + locationsURL + "</a>").text("Link")
+            pFour.append(pFive)
+
+
+
+            // Utelly locations URL
+          //  var pFive = $("<a>");
+        //     pFive.addClass("url-link");
+        //    pFive.attr("href=", locationsURL);
+        //    pFive.text(locationsURL);
+
+         //   movieDiv.append(pFive);
        }
 
 
+    });
+    });
 
 
-   });
-
-
-
-});
+})
