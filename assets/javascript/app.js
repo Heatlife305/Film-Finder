@@ -41,7 +41,8 @@ $(document).ready(function() {
     $("#submit").on("click", function(event) {
         event.preventDefault();
 
-        var movieInput = $("#movie-input")
+        var movieInput = $("#movie-input").val().trim();
+        
     })
 
 
