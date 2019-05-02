@@ -44,7 +44,38 @@ $(document).ready(function() {
         var movieInput = $("#movie-input").val().trim();
         
     })
+//==================================================================
+var term = "game of thrones"
+var country = "us"
+var movieLocation;
 
+
+   var queryURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + term + "&country=" + country
+   $.ajax({
+       type: 'GET',
+       url: queryURL,
+       headers:{
+           "X-RapidAPI-Host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": "5051d1fe69mshedc1cc9f23ffa38p118110jsn0a05732261dd"
+
+       }
+   }).then(function(data){
+       console.log(data);
+       console.log(data.results)
+       console.log(data.results[0])
+       console.log(data.results[0].locations[0].display_name)
+       console.log(data.results[0].locations[1].display_name)
+
+       var response = data.results[0].locations
+
+       for (var i = 0; i < response.length; i++) {
+            console.log(response[i].display_name)
+       }
+
+
+
+
+   });
 
 
 
