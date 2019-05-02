@@ -1,21 +1,14 @@
-body,
-html {
-  height: 100%;
+#movie-form{
+  background: lightgrey;
+  width:700px;
+  text-align: center;
 }
 
-label {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
+body {
+  margin-top: 20px;
 }
 
-.bg {
-  /* The image used */
-  background-image: url(../images/house1.png);
-  /* Full height */
+.container {
   height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  align-items: center;
 }
