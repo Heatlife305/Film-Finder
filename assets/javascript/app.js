@@ -38,12 +38,7 @@ $(document).ready(function() {
         $("#movie-view").prepend(movieDiv);
     });
 
-    $("#submit").on("click", function(event) {
-        event.preventDefault();
-
-        var movieInput = $("#movie-input").val().trim();
-        
-    })
+// Second AJAX call to Utelly
 //==================================================================
 var term = "game of thrones"
 var country = "us"
@@ -70,6 +65,7 @@ var movieLocation;
 
        for (var i = 0; i < response.length; i++) {
             console.log(response[i].display_name)
+            console.log(response[i].url)
        }
 
 
