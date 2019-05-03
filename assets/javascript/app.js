@@ -26,6 +26,12 @@ function getMovies(searchInput) {
 
         movieDiv.append(pZero);
 
+        var imgURL = response.Poster;
+
+        var image = $("<img>").attr("src", imgURL);
+
+        movieDiv.append(image);
+
         var rating = response.Rated;
 
         var pOne = $("<p>").text("Rating: " + rating);
@@ -49,12 +55,6 @@ function getMovies(searchInput) {
         var pFour = $("<p>").text("IMDB Rating: " + imdbScore);
 
         movieDiv.append(pFour);
-
-        var imgURL = response.Poster;
-
-        var image = $("<img>").attr("src", imgURL);
-
-        movieDiv.append(image);
 
         $("#movie-info").prepend(movieDiv);
     
