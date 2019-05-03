@@ -11,3 +11,8 @@ body {
   height: 100%;
   align-items: center;
 }
+
+img {
+  max-width: 20%;
+  max-height: 20%;
+}
