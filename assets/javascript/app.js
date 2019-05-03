@@ -1,8 +1,16 @@
 $(document).ready(function() {
 
-    var movie = $(this).attr("data-name");
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
+    $("#search-btn").on("click", function(event) {
+        event.preventDefault();
+        console.log($("#input-movie").val().trim())
+        let searchInput = $("#input-movie").val().trim();
+        getMovies(searchInput);
+    });
+
+
+function getMovies(searchInput) {
+    var queryURL = "https://www.omdbapi.com/?t=" + searchInput + "&apikey=trilogy";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -17,7 +25,7 @@ $(document).ready(function() {
 
         movieDiv.append(pOne);
 
-        var released = response.Release;
+        var released = response.Released;
 
         var pTwo = $("<p>").text("Released: " + released);
 
@@ -29,6 +37,10 @@ $(document).ready(function() {
 
         movieDiv.append(pThree);
 
+        var imdbScore = response.imdbRating
+
+        var pFour = $()
+
         var imgURL = response.Poster
 
         var image = $("<img>").attr("src", imgURL);
@@ -37,15 +49,13 @@ $(document).ready(function() {
 
         $("#movie-info").prepend(movieDiv);
     
-
+    
 // Second AJAX call to Utelly
 //==================================================================
-var term = "game of thrones"
 var country = "us"
-var movieLocation;
 
 
-   var queryURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + term + "&country=" + country
+   var queryURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + searchInput + "&country=" + country
    $.ajax({
        type: 'GET',
        url: queryURL,
@@ -72,28 +82,17 @@ var movieLocation;
             var locationsURL = response[i].url
             console.log(locationsURL);
 
-            var pFour = $("<p>").text("You can watch it here: " + locationsName);
+            var pFive = $("<p>").text("You can watch it here: " + locationsName);
 
 
-            movieDiv.append(pFour);
+            movieDiv.append(pFive);
 
-            var pFive = $("<a href=" + locationsURL + "</a>").text("Link")
-            pFour.append(pFive)
+            var pSix = $("<a href=" + locationsURL + "</a>").text("Link")
+            pFive.append(pSix)
 
-
-
-            // Utelly locations URL
-          //  var pFive = $("<a>");
-        //     pFive.addClass("url-link");
-        //    pFive.attr("href=", locationsURL);
-        //    pFive.text(locationsURL);
-
-         //   movieDiv.append(pFive);
        }
 
-
     });
-    });
-
-
-})
+});
+}
+});
