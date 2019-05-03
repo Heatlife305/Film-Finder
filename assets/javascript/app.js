@@ -22,7 +22,7 @@ function getMovies(searchInput) {
 
         var title = response.Title;
 
-        var pZero = $("<p>").text("Title: " + title);
+        var pZero = $("<h6>").text("Title: " + title);
 
         movieDiv.append(pZero);
 
