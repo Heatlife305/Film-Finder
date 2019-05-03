@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+    // Grabs the user input and calls upon the getMovies function
     $("#search-btn").on("click", function(event) {
         event.preventDefault();
         console.log($("#input-movie").val().trim())
@@ -8,7 +8,7 @@ $(document).ready(function() {
         getMovies(searchInput);
     });
 
-
+// This function activates both of the ajax calls and gets the data the user requested 
 function getMovies(searchInput) {
     var queryURL = "https://www.omdbapi.com/?t=" + searchInput + "&apikey=trilogy";
     $.ajax({
@@ -17,7 +17,14 @@ function getMovies(searchInput) {
     }).then(function(response) {
         console.log(response)
 
+        // Creating a div to hold our movie info 
         var movieDiv = $("<div class='movie'>");
+
+        var title = response.Title;
+
+        var pZero = $("<p>").text("Title: " + title);
+
+        movieDiv.append(pZero);
 
         var rating = response.Rated;
 
@@ -37,11 +44,13 @@ function getMovies(searchInput) {
 
         movieDiv.append(pThree);
 
-        var imdbScore = response.imdbRating
+        var imdbScore = response.imdbRating;
 
-        var pFour = $()
+        var pFour = $("<p>").text("IMDB Rating: " + imdbScore);
 
-        var imgURL = response.Poster
+        movieDiv.append(pFour);
+
+        var imgURL = response.Poster;
 
         var image = $("<img>").attr("src", imgURL);
 
@@ -54,7 +63,6 @@ function getMovies(searchInput) {
 //==================================================================
 var country = "us"
 
-
    var queryURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + searchInput + "&country=" + country
    $.ajax({
        type: 'GET',
@@ -65,34 +73,34 @@ var country = "us"
 
        }
    }).then(function(data){
-       console.log(data.results)
-       console.log(data.results[0])
-       console.log(data.results[0].locations[0].display_name)
-       console.log(data.results[0].locations[1].display_name)
+       console.log(data.results[0]);
 
-       var response = data.results[0].locations
+       var response = data.results[0].locations;
 
        for (var i = 0; i < response.length; i++) {
-            console.log(response[i].display_name)
-            //console.log(response[i].url)
+            console.log(response[i].display_name);
 
-            // Utelly locations
-            var locationsName = response[i].display_name
+            // Utelly locations name and link
+            var locationsName = response[i].display_name;
 
-            var locationsURL = response[i].url
+            var locationsURL = response[i].url;
             console.log(locationsURL);
 
-            var pFive = $("<p>").text("You can watch it here: " + locationsName);
-
+            var pFive = $("<p>").text("Watch it here: ");
 
             movieDiv.append(pFive);
 
-            var pSix = $("<a href=" + locationsURL + "</a>").text("Link")
-            pFive.append(pSix)
+            // Creates a link and holds the locations URL inside and displays the appropriate name
+            var pSix = $("<a href=" + locationsURL + "</a>").text(locationsName);
+
+            pFive.append(pSix);
 
        }
 
     });
+
 });
-}
+
+} // End of getMovies function
+
 });
