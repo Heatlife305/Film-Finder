@@ -1,12 +1,15 @@
-body,
-html {
-  height: 100%;
+#movie-form{
+  background: lightgrey;
+  width:700px;
+  text-align: center;
 }
 
-label {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
+body {
+  margin-top: 20px;
+}
+.container {
+  height: 100%;
+  align-items: center;
 }
 
 img {
