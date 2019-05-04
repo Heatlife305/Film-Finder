@@ -1,18 +1,29 @@
-#movie-form{
-  background: lightgrey;
-  width:700px;
-  text-align: center;
-}
-
-body {
-  margin-top: 20px;
-}
-.container {
+body,
+html {
   height: 100%;
-  align-items: center;
 }
-
+label {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
 img {
   max-width: 20%;
   max-height: 20%;
+}
+.movie {
+  background: grey;
+  padding: 5px;
+  margin: 5px;
+  max-width: 30%;
+  max-height: 30%;
+  float: left;
+}
+#movie-info {
+}
+#movie-form {
+  border: 1px solid grey;
+  margin-top: 10px;
+}
+p {
 }
