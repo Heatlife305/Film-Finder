@@ -4,8 +4,12 @@ $(document).ready(function() {
     $("#search-btn").on("click", function(event) {
         event.preventDefault();
         console.log($("#input-movie").val().trim())
+
         let searchInput = $("#input-movie").val().trim();
+
         getMovies(searchInput);
+
+        $("#movie-info").empty();
     });
 
 // This function activates both of the ajax calls and gets the data the user requested 
@@ -20,36 +24,49 @@ function getMovies(searchInput) {
         // Creating a div to hold our movie info 
         var movieDiv = $("<div class='movie'>");
 
+        // Movie title
         var title = response.Title;
 
-        var pZero = $("<h6>").text("Title: " + title);
+        var pZero = $("<h6>").text(title);
 
         movieDiv.append(pZero);
 
+        // Movie poster
         var imgURL = response.Poster;
 
         var image = $("<img>").attr("src", imgURL);
 
         movieDiv.append(image);
 
+        // Movie rating
         var rating = response.Rated;
 
         var pOne = $("<p>").text("Rating: " + rating);
 
         movieDiv.append(pOne);
 
+        // Movie genre
+        var genre = response.Genre;
+
+        var movieGenre = $("<p>").text("Genre: " + genre);
+
+        movieDiv.append(movieGenre);
+
+        // Movie release date
         var released = response.Released;
 
         var pTwo = $("<p>").text("Released: " + released);
 
         movieDiv.append(pTwo);
 
+        // Movie plot
         var plot = response.Plot;
 
         var pThree = $("<p>").text("Plot: " + plot);
 
         movieDiv.append(pThree);
 
+        // IMDB Rating score
         var imdbScore = response.imdbRating;
 
         var pFour = $("<p>").text("IMDB Rating: " + imdbScore);
